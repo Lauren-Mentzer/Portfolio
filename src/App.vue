@@ -1,85 +1,106 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import { RouterView } from 'vue-router'
+import { useParallax } from '@vueuse/core'
+import { computed, reactive, ref } from 'vue'
+
+import MainHeader from './components/MainHeader.vue'
+import MainFooter from './components/MainFooter.vue'
+
+const container = ref(null)
+const parallax = reactive(useParallax(container))
+const layer0 = computed(() =>
+  parallaxChecked.value
+    ? {
+        transform: `translateX(${parallax.tilt * 10}px) translateY(${parallax.roll * 10}px) scale(1.33) `
+      }
+    : {
+        transform: `scale(1.33)`
+      }
+)
+const layer1 = computed(() =>
+  parallaxChecked.value
+    ? {
+        transform: `translateX(${parallax.tilt * 20}px) translateY(${parallax.roll * 20}px)`
+      }
+    : null
+)
+const parallaxChecked = ref(true)
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
-
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
+  <div>
+    <div ref="container" class="container">
+      <img alt="space" class="layer-base" :style="layer0" src="@/assets/stars.jpg" />
+      <div class="top-layers" :style="layer1">
+        <div class="content">
+          <MainHeader />
+          <div class="router-outlet">
+            <RouterView />
+          </div>
+        </div>
+      </div>
+      <MainFooter
+        :parallaxChecked="parallaxChecked"
+        @parallaxSwitched="parallaxChecked = !parallaxChecked"
+      />
     </div>
-  </header>
-
-  <RouterView />
+  </div>
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.container {
+  transition: 0.3 ease-out all;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+  overflow: hidden;
 }
-
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
+.layer-base {
+  position: absolute;
+  height: 100vh;
+  width: auto;
+  min-width: 100vw;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-out all;
+  z-index: 0;
 }
-
-nav {
-  width: 100%;
-  font-size: 12px;
-  text-align: center;
-  margin-top: 2rem;
+.top-layers {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: 0.3s ease-out all;
+  height: calc(100vh - 100px);
+  width: 100vw;
+  z-index: 1;
 }
-
-nav a.router-link-exact-active {
-  color: var(--color-text);
+.content {
+  height: calc(100vh - 100px);
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  padding: 7em;
 }
-
-nav a.router-link-exact-active:hover {
-  background-color: transparent;
-}
-
-nav a {
-  display: inline-block;
-  padding: 0 1rem;
-  border-left: 1px solid var(--color-border);
-}
-
-nav a:first-of-type {
-  border: 0;
+.router-outlet {
+  margin-left: 100px;
+  width: calc(75% - 50px);
+  max-width: 1000px;
 }
 
 @media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
+}
+@media (max-width: 1200px) {
+  .content {
+    flex-direction: column;
+    padding: 3em;
+    justify-content: unset;
   }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-
-  nav {
-    text-align: left;
-    margin-left: -1rem;
-    font-size: 1rem;
-
-    padding: 1rem 0;
-    margin-top: 1rem;
+  .router-outlet {
+    margin-left: 0;
+    margin-top: 60px;
+    width: 100%;
   }
 }
 </style>
