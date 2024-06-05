@@ -1,6 +1,6 @@
 <script setup lang="ts">
 const emit = defineEmits(['parallaxSwitched'])
-const props = defineProps({ parallaxChecked: Boolean })
+const props = defineProps<{ parallaxChecked: boolean }>()
 import InputSwitch from 'primevue/inputswitch'
 
 const checkboxCallback = () => {
@@ -50,9 +50,15 @@ const checkboxCallback = () => {
   margin-right: 10px;
 }
 label {
-  font-family: 'Cutive Mono', monospace;
+  font-family: var(--font-mono);
   font-size: 18px;
 }
-@media (min-width: 1024px) {
+@media (max-width: 650px) {
+  .footer-bg {
+    height: 40px;
+  }
+  .switch {
+    display: none;
+  }
 }
 </style>

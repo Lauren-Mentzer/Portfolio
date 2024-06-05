@@ -35,7 +35,11 @@ const parallaxChecked = ref(true)
         <div class="content">
           <MainHeader />
           <div class="router-outlet">
-            <RouterView />
+            <router-view v-slot="{ Component }">
+              <transition name="fade" mode="out-in">
+                <component :is="Component" :key="$route.path" />
+              </transition>
+            </router-view>
           </div>
         </div>
       </div>
@@ -88,10 +92,16 @@ const parallaxChecked = ref(true)
   width: calc(75% - 50px);
   max-width: 1000px;
 }
-
-@media (min-width: 1024px) {
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.5s ease;
 }
-@media (max-width: 1200px) {
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+}
+@media (max-width: 1300px) {
   .content {
     flex-direction: column;
     padding: 3em;
@@ -101,6 +111,14 @@ const parallaxChecked = ref(true)
     margin-left: 0;
     margin-top: 60px;
     width: 100%;
+  }
+}
+@media (max-width: 650px) {
+  .content {
+    padding: 1em;
+  }
+  .router-outlet {
+    margin-top: 1em;
   }
 }
 </style>

@@ -1,6 +1,16 @@
 @import './base.css';
 @import 'primeicons/primeicons.css';
 
+:root {
+  --color-green: #10b981;
+  --color-green-dark: #059669;
+  --color-blue: #115883;
+  --color-blue-dark: #0d4668;
+  --font-serif: 'Brawler', serif;
+  --font-cursive: 'Rouge Script', cursive;
+  --font-mono: 'Cutive Mono', monospace;
+}
+
 #app {
   color: white;
   font-family: 'Brawler', serif;
@@ -10,7 +20,7 @@
 }
 
 .router-link-active {
-  color: #10b981;
+  color: var(--color-green);
   font-weight: bold;
   text-shadow: 5px 5px 10px black;
 }
@@ -19,5 +29,8 @@
   flex: 0;
 }
 .p-component {
-  font-family: 'Brawler', serif;
+  font-family: var(--font-serif);
+}
+.p-button .p-button-icon {
+  font-size: 22px;
 }
