@@ -56,6 +56,7 @@ img {
 }
 h2 {
   margin-top: 0;
+  font-weight: normal;
 }
 .hover {
   width: 100%;

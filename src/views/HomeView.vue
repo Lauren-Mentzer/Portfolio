@@ -45,7 +45,7 @@ const skills = reactive([
 <style scoped>
 .home-content {
   background-color: rgba(0, 0, 0, 0.5);
-  padding: 2rem;
+  padding: 2em;
   max-width: 700px;
   max-height: calc(100vh - 140px);
   overflow-y: auto;
@@ -54,20 +54,23 @@ const skills = reactive([
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 1em;
   row-gap: 10px;
-  margin-bottom: 2rem;
+  margin-bottom: 2em;
 }
 .icons-container {
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 1rem;
+  column-gap: 1em;
 }
 h1 {
   font-weight: normal;
   text-shadow: 5px 5px 10px black;
   margin: 0;
+}
+h2 {
+  font-weight: normal;
 }
 .cursive {
   font-family: var(--font-cursive);

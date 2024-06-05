@@ -59,8 +59,8 @@ const projects = reactive([
   flex-direction: row;
   justify-content: space-around;
   flex-wrap: wrap;
-  row-gap: 2em;
-  max-height: calc(100vh - 100px);
+  row-gap: 1em;
+  max-height: calc(100vh - 80px);
   overflow-y: auto;
 }
 @media (max-width: 1300px) {

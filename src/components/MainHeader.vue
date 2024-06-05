@@ -1,10 +1,11 @@
 <script setup lang="ts">
 import Button from 'primevue/button'
 import Menu from 'primevue/menu'
-import { RouterLink, useRoute } from 'vue-router'
+import { RouterLink, useRoute, useRouter } from 'vue-router'
 import { ref } from 'vue'
 
 const route = useRoute()
+const router = useRouter()
 const menu = ref()
 const menuItems = ref([
   { label: 'About', route: '/' },
@@ -14,12 +15,15 @@ const menuItems = ref([
 const toggleMenu = (event: Event) => {
   menu.value.toggle(event)
 }
+const navigateHome = () => {
+  router.push('/')
+}
 </script>
 
 <template>
   <div class="header">
     <div class="name">
-      <img alt="monogram" class="logo" src="@/assets/logo.png" />
+      <img alt="monogram" class="logo" src="@/assets/logo.png" @click="navigateHome" />
       <h1><span class="cursive">Lauren</span> Mentzer</h1>
     </div>
     <nav class="nav">

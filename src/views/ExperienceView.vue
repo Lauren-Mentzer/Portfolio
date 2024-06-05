@@ -92,8 +92,8 @@ const events = reactive([
   margin-top: 5px;
 }
 .icon {
-  width: 2rem;
-  height: 2rem;
+  width: 2em;
+  height: 2em;
   display: flex;
   justify-content: center;
   align-items: center;
