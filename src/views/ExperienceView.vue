@@ -5,7 +5,7 @@ import { reactive } from 'vue'
 
 const events = reactive([
   {
-    date: '2024 -2018',
+    date: '2018 -2024',
     title: 'Web Developer BrickSimple, LLC',
     details:
       'Worked on a variety of projects developing web applications for companies in sectors ranging from healthcare to big data analysis, serving as lead, solo, or team developer',

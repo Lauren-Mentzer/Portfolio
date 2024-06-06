@@ -400,3 +400,5 @@ FodyWeavers.xsd
 .vite/*
 .vscode/*
 package-lock.json
+dist
+dist.zip

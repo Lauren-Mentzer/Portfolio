@@ -30,6 +30,9 @@ const skills = reactive([
           <a href="https://www.linkedin.com/in/laurenmentzer/" target="_blank" rel="noopener">
             <Button class="icon" rounded icon="pi pi-linkedin" aria-label="LinkedIn" />
           </a>
+          <a href="mailto:lementzer@gmail.com">
+            <Button class="icon" rounded icon="pi pi-envelope" aria-label="Email" />
+          </a>
         </div>
       </div>
       <p>

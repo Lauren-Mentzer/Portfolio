@@ -112,5 +112,15 @@ a:hover {
   h2 {
     font-size: 20px;
   }
+  @media (max-width: 370px) {
+    .item {
+      height: 350px;
+    }
+  }
+  @media (max-width: 340px) {
+    .item {
+      height: 370px;
+    }
+  }
 }
 </style>
