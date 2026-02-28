@@ -3,9 +3,10 @@
 
 :root {
   --color-green: #10b981;
-  --color-green-dark: #059669;
+  --color-green-dark: #04865D;
   --color-blue: #115883;
   --color-blue-dark: #0d4668;
+  --color-dark: #000D00;
   --font-serif: 'Brawler', serif;
   --font-cursive: 'Rouge Script', cursive;
   --font-mono: 'Cutive Mono', monospace;
@@ -23,6 +24,7 @@
   color: var(--color-green);
   font-weight: bold;
   text-shadow: 5px 5px 10px black;
+  text-decoration: underline;
 }
 
 .p-timeline-event-opposite {
@@ -33,4 +35,11 @@
 }
 .p-button .p-button-icon {
   font-size: 22px;
+}
+
+.p-inputswitch-slider {
+  background-color: #A3B1C8;
+}
+.p-highlight .p-inputswitch-slider {
+  background-color: var(--color-green);
 }

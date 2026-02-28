@@ -1,23 +1,36 @@
 <script setup lang="ts">
 const emit = defineEmits(['parallaxSwitched'])
-const props = defineProps<{ parallaxChecked: boolean }>()
+const props = defineProps<{ reduceMotionChecked: boolean }>()
 import InputSwitch from 'primevue/inputswitch'
 
-const checkboxCallback = () => {
-  emit('parallaxSwitched')
+const checkboxCallback = (key: string) => {
+  if (key === 'parallax') emit('parallaxSwitched')
 }
 </script>
 
 <template>
-  <div class="footer-bg">
+  <footer class="footer-bg">
     <div class="footer">
-      <span>Copyright 2024 Mentzer</span>
-      <div class="switch">
-        <InputSwitch id="switch" @change="checkboxCallback" :modelValue="props.parallaxChecked" />
-        <label for="switch">Parallax</label>
+      <div>
+        <a target="_blank" href="https://www.accessibilityassociation.org/">
+          <img src="../assets/iaap.png" alt="IAAP Professional Member" />
+        </a>
+        <a target="_blank" href="https://www.accessibilityassociation.org/cpacc">
+          <img src="../assets/cpacc.png" alt="IAAP Certified CPACC" />
+        </a>
+      </div>
+      <div class="column">
+        <p>Crafted by hand</p>
+        <p>Copyright 2026 Mentzer</p>
+      </div>
+      <div class="column">
+        <div class="switch">
+          <InputSwitch id="parallax" @change="checkboxCallback('parallax')" :modelValue="props.reduceMotionChecked" />
+          <label for="parallax">Reduce Motion</label>
+        </div>
       </div>
     </div>
-  </div>
+  </footer>
 </template>
 
 <style scoped>
@@ -33,18 +46,29 @@ const checkboxCallback = () => {
   height: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-around;
   align-items: center;
   font-size: 12px;
+}
+.column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+img {
+  height: 75px;
+  width: 75px;
+  margin-right: 8px;
+}
+p {
+  margin: 0;
 }
 .switch {
   padding-right: 20px;
   display: flex;
   flex-direction: row;
   align-items: center;
-  position: absolute;
-  right: 0;
-  top: 28px;
 }
 #switch {
   margin-right: 10px;
@@ -52,11 +76,9 @@ const checkboxCallback = () => {
 label {
   font-family: var(--font-mono);
   font-size: 18px;
+  margin-left: 8px;
 }
 @media (max-width: 650px) {
-  .footer-bg {
-    height: 40px;
-  }
   .switch {
     display: none;
   }

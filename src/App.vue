@@ -5,32 +5,34 @@ import { computed, reactive, ref } from 'vue'
 
 import MainHeader from './components/MainHeader.vue'
 import MainFooter from './components/MainFooter.vue'
+import MobileHeader from './components/MobileHeader.vue'
 
 const container = ref(null)
 const parallax = reactive(useParallax(container))
 const layer0 = computed(() =>
-  parallaxChecked.value
+  reduceMotionChecked.value
     ? {
-        transform: `translateX(${parallax.tilt * 10}px) translateY(${parallax.roll * 10}px) scale(1.33) `
+        transform: `scale(1.33)`
       }
     : {
-        transform: `scale(1.33)`
+        transform: `translateX(${parallax.tilt * 10}px) translateY(${parallax.roll * 10}px) scale(1.33) `
       }
 )
 const layer1 = computed(() =>
-  parallaxChecked.value
-    ? {
+  reduceMotionChecked.value
+    ? null
+    : {
         transform: `translateX(${parallax.tilt * 20}px) translateY(${parallax.roll * 20}px)`
       }
-    : null
 )
-const parallaxChecked = ref(true)
+const reduceMotionChecked = ref(false)
 </script>
 
 <template>
   <div>
     <div ref="container" class="container">
       <img alt="space" class="layer-base" :style="layer0" src="@/assets/stars.jpg" />
+      <MobileHeader />
       <div class="top-layers" :style="layer1">
         <div class="content">
           <MainHeader />
@@ -44,8 +46,8 @@ const parallaxChecked = ref(true)
         </div>
       </div>
       <MainFooter
-        :parallaxChecked="parallaxChecked"
-        @parallaxSwitched="parallaxChecked = !parallaxChecked"
+        :reduceMotionChecked="reduceMotionChecked"
+        @parallaxSwitched="reduceMotionChecked = !reduceMotionChecked"
       />
     </div>
   </div>
@@ -74,7 +76,7 @@ const parallaxChecked = ref(true)
   top: 0;
   left: 0;
   transition: 0.3s ease-out all;
-  height: calc(100vh - 100px);
+  height: calc(100vh - 80px);
   width: 100vw;
   z-index: 1;
 }
@@ -102,6 +104,11 @@ const parallaxChecked = ref(true)
   opacity: 0;
 }
 @media (max-width: 1300px) {
+  .top-layers {
+    top: 110px;
+    left: 0;
+    height: calc(100vh - 190px);
+  }
   .content {
     flex-direction: column;
     padding: 3em;
@@ -109,16 +116,16 @@ const parallaxChecked = ref(true)
   }
   .router-outlet {
     margin-left: 0;
-    margin-top: 60px;
     width: 100%;
   }
 }
 @media (max-width: 650px) {
-  .content {
-    padding: 1em;
+  .top-layers {
+    top: 66px;
+    height: calc(100vh - 146px);
   }
-  .router-outlet {
-    margin-top: 1em;
+  .content {
+    padding: 2em;
   }
 }
 </style>

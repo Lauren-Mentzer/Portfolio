@@ -4,6 +4,20 @@ import ProjectItem from '../components/ProjectItem.vue'
 
 const projects = reactive([
   {
+    id: 5,
+    image: 'project_5.png',
+    title: 'Analytics for School Districts',
+    description: "Led front end development on ClassLink's Analytics+ product. Developed over 20 custom data visualizations to help school administrators understand student digital resource usage. Focused on ease of understanding by a non-technical user, as well as maintainability, scalability, and modularity.",
+    tags: ['Angular', 'TypeScript', 'Chart.js'],
+  },
+  {
+    id: 6,
+    image: 'project_6.png',
+    title: 'Record Matching',
+    description: 'Created a proof of concept for an entierly new product while at ClassLink in under one month. Working alongside a backend developer and a data engineer, this inter-system student record-matching application was built from the ground up and successfully demoed to clients.',
+    tags: ['Angular', 'TypeScript'],
+  },
+  {
     id: 1,
     image: 'project_1.jpg',
     title: 'Hardware Integration',
@@ -60,18 +74,21 @@ const projects = reactive([
   justify-content: space-around;
   flex-wrap: wrap;
   row-gap: 1em;
-  max-height: calc(100vh - 80px);
+  margin-top: 100px;
+  max-height: calc(100vh - 180px);
   overflow-y: auto;
 }
 @media (max-width: 1300px) {
   .projects-container {
+    margin-top: 0;
     justify-content: space-around;
-    height: calc(100vh - 310px);
+    height: calc(100vh - 190px - 6em);
   }
 }
 @media (max-width: 650px) {
   .projects-container {
-    height: calc(100vh - 140px);
+    margin-top: 0;
+    height: calc(100vh - 146px - 4em);
   }
 }
 </style>

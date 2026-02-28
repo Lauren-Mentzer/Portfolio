@@ -31,27 +31,41 @@ const navigateHome = () => {
       <RouterLink to="/experience">Experience</RouterLink>
       <RouterLink to="/projects">Projects</RouterLink>
     </nav>
+    <h1 class="mobileTitle">{{ route.name }}</h1>
+    <Button
+      class="mobileButton"
+      type="button"
+      icon="pi pi-bars"
+      @click="toggleMenu"
+      aria-haspopup="true"
+      aria-controls="mobile_menu"
+      raised
+      rounded
+    />
+    <Menu ref="menu" id="mobile_menu" :model="menuItems" :popup="true">
+      <template #item="{ item, props }">
+        <router-link v-slot="{ href, navigate }" :to="item.route" custom>
+          <a v-ripple :href="href" v-bind="props.action" @click="navigate">
+            <span class="ml-2">{{ item.label }}</span>
+          </a>
+        </router-link>
+      </template>
+    </Menu>
   </div>
 </template>
 
 <style scoped>
 .header {
-  width: calc(25% - 50px);
-  max-width: 490px;
-  min-width: 275px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
+  display: none;
 }
 .name {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
 }
 img {
-  max-width: 100%;
-  width: 300px;
+  width: 100px;
+  margin-right: 30px;
   height: auto;
 }
 h1 {
@@ -64,6 +78,7 @@ h1 {
 }
 .nav {
   width: 100%;
+  max-width: 275px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -80,7 +95,31 @@ h1 {
 }
 @media (max-width: 1300px) {
   .header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 24px;
+    width: 100vw;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
+}
+@media (max-width: 650px) {
+  h1,
+  .nav {
     display: none;
+  }
+  .mobileButton,
+  .mobileTitle {
+    display: flex;
+  }
+  img {
+    width: 60px;
+    margin-right: 0;
   }
 }
 </style>

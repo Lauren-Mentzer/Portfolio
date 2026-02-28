@@ -5,6 +5,21 @@ import { reactive } from 'vue'
 
 const events = reactive([
   {
+    date: '2024 -2026',
+    title: 'Front End Web Developer ClassLink, Inc',
+    details: 'Principal front end web developer for ClassLink’s Analytics+ product, developing over 20 custom data visualizations and helping maintain a company-wide components library',
+    icon: 'pi pi-code',
+    color: '#115883',
+    button: true
+  },
+  {
+    date: '2025',
+    title: 'Certified Professional in Accessibility Core Competencies',
+    details: 'Earned CPACC accreditation from the International Association of Accessibility Professionals',
+    icon: 'pi pi-graduation-cap',
+    color: '#04865D'
+  },
+  {
     date: '2018 -2024',
     title: 'Web Developer BrickSimple, LLC',
     details:
@@ -25,14 +40,14 @@ const events = reactive([
     title: 'Master of Science Computer Science',
     details: 'Lehigh University, P.C. Rossin College of Engineering & Applied Science',
     icon: 'pi pi-graduation-cap',
-    color: '#059669'
+    color: '#04865D'
   },
   {
     date: '2016',
     title: 'Bachelor of Science Computer Engineering',
     details: 'Lehigh University, P.C. Rossin College of Engineering & Applied Science',
     icon: 'pi pi-graduation-cap',
-    color: '#059669'
+    color: '#04865D'
   },
   {
     date: '2015',
@@ -119,12 +134,12 @@ const events = reactive([
 }
 @media (max-width: 1300px) {
   .timeline-wrapper {
-    max-height: calc(100vh - 310px);
+    max-height: calc(100vh - 190px - 6em);
   }
 }
 @media (max-width: 650px) {
   .timeline-wrapper {
-    max-height: calc(100vh - 140px);
+    max-height: calc(100vh - 146px - 4em);
   }
   .title {
     width: unset;

@@ -36,8 +36,8 @@ const skills = reactive([
         </div>
       </div>
       <p>
-        A skilled front end developer with 6+ years of experience in the field, specializing in
-        beautiful design and intuitive user experience
+        A skilled front end developer with 9+ years of experience in the field. Passionately hand-codes beautifully 
+        designed web applications, specializing in accessibility and intuitive user experience.
       </p>
       <h2>Experienced In:</h2>
       <Chip v-for="skill in skills" :label="skill" :key="skill" class="chip" />
@@ -96,12 +96,16 @@ h2 {
 @media (max-width: 1300px) {
   .home-content {
     margin: auto;
+    margin-top: 3em;
+    max-height: calc(100vh - 190px - 9em);
   }
 }
 @media (max-width: 650px) {
   .home-content {
+    margin-top: 3em;
     padding: 1em;
     text-align: center;
+    max-height: calc(100vh - 146px - 7em);
   }
   .row {
     flex-direction: column;
